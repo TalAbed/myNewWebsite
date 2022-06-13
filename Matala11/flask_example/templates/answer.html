@@ -10,22 +10,23 @@
     h1 {font-size: 40px;}
     p {text-align: center;}
     p{font-size: 20px;}
+    h4 {text-align: center;}
     </style>
 </head>
 
 <div class="center">
 <h1>Player A got:<br></h1>
-{% for x in a %}
+<h4>{% for x in a %}
  {{x}} ,
-{%endfor%}<br>
+{%endfor%}<br></h4>
 
 <h1>Player B got:<br></h1>
-{% for x in b %}
+<h4>{% for x in b %}
  {{x}} ,
-{%endfor%}<br>
+{%endfor%}<br></h4>
 
 <h1>No one got:<br></h1>
-{% for x in cp %}
+<h4>{% for x in cp %}
  {{x}} ,
-{%endfor%}<br>
+{%endfor%}<br></h4>
 </div>

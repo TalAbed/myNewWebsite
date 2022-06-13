@@ -14,6 +14,7 @@
 <form action="/answer" method="POST" role="form">
     {{ form.hidden_tag() }}
     <div class="center">
+        <h1>Please enter the lists using [item1, items2,...]<br></h1>
         <h1>{{ form.playerA.label }}<br><br> {{ form.playerA() }} <br> </h1>
         <h1>{{ form.playerB.label }}<br><br> {{ form.playerB() }} <br> </h1>
         <h1>{{ form.s() }}</h1>

@@ -94,8 +94,16 @@ def RepresentsInt(s):
 @app.route('/answer', methods=["POST"])
 def answer():
     #l = request.form
+    if request.form["playerA"][0] != '[':
+        return render_template("error_soger.html")
+    if request.form["playerA"][-1] != ']':
+        return render_template("error_soger.html")
     listA=list(eval(request.form["playerA"]))
     listB=list(eval(request.form["playerB"]))
+    if not all([isinstance(item, int) for item in listA]):
+        return render_template("error_strings.html")
+    if not all([isinstance(item, int) for item in listB]):
+        return render_template("error_strings.html")
     #al = {x:l[x] for x in l}
     # for x in l:
     #     if RepresentsInt(l[x]):
@@ -105,10 +113,20 @@ def answer():
     #         else:
     #             playerB.append(yossi)
     if len(listA)==len(listB):
-        a,b,cp = BT(listA, listB)
-        return render_template("answer.html", a=a, b=b, cp=cp)
+        sortA = listA.copy()
+        sortB = listB.copy()
+        #print ("origins", originA, originB)
+        sortA.sort()
+        sortB.sort()
+        print("sort", sortA, sortB)
+        if sortA == sortB:
+            #print("hi", sortA, sortB)
+            a,b,cp = BT(listA, listB)
+            return render_template("answer.html", a=a, b=b, cp=cp)
+        else:
+            return render_template("error_elements.html")
     else:
-        return render_template("error.html")
+        return render_template("error_len.html")
 
 
 # app.run(debug=True)
